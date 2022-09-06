@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"></script>
+    <link rel="stylesheet" href="./Index/index.css">
+
+    <title>Document</title>
+</head>
+<body>
+    <div class="forma" id="app">
+        <form >
+            <p id="title">Login Page</p>
+            <input type="Email" placeholder="Enter your Email" v-model="username">
+            <p>{{username}}</p>
+            <input type="Password" placeholder="Enter the Password" v-model="password">
+            <p>{{password}}</p>
+            <button type="submit" @click=>Login</button>
+        </form>
+    </div>
+    <br>
+    <br>
+
+    <div id="checkapp">
+        <form >
+            <input type="checkbox" id="Apple" value="Apple" v-model="checkfruits">
+            <label for="Apple">Apple</label><br>
+            <input type="checkbox" id="Orange" value="Orange" v-model="checkfruits">
+            <label for="Orange">Orange</label><br>
+            <input type="checkbox" id="Cherry" value="Cherry" v-model="checkfruits">
+            <label for="Cherry">Cherry</label><br>
+            <input type="checkbox" id="Banana" value="Banana" v-model="checkfruits">
+            <label for="Banana">Banana</label><br>
+            <span>Checked names: {{checkfruits}}</span>
+        
+        </form>
+    </div>
+    <br>
+    <br>
+
+    <div id="iffapp">
+        <form>
+            <select v-model="selected">
+                <option v-for="option in options" :value="option.value">
+                   {{option.text}}
+                </option>
+            </select><br>
+            <span>Selected:{{selected}}</span>
+        </form>
+    </div>
+    
+    
+
+
+
+    <br>
+    <br>
+    
+
+    <script>
+        new Vue({
+            el: '#app',/*like a selector, 
+            certain this vue serve which element
+            id is " # ", class is " . "*/
+            
+            data: {//data is for collecting the data, data for
+                //el element using
+               username:'Kaiyuan',
+                password: 123456,
+
+            }
+
+        })
+
+        new Vue({
+            el: '#checkapp',/*like a selector, 
+            certain this vue serve which element
+            id is " # ", class is " . "*/
+            
+            data: {//data is for collecting the data, data for
+                //el element using
+                checkfruits:[]
+
+            }
+
+        })
+
+        new Vue({
+            el: '#iffapp',/*like a selector, 
+            certain this vue serve which element
+            id is " # ", class is " . "*/
+            
+            data: {//data is for collecting the data, data for
+                //el element using
+                selected:"None",
+                options:[
+                    { text: 'Apple', value: 'A' },
+                    { text: 'Banana', value: 'B' },
+                    { text: 'Cat', value: 'C' },
+                    { text: 'Dog', value: 'D' },
+                    { text: 'ET', value: 'E' },
+
+                ],
+                
+
+            }
+
+        })
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"></script>
+    <title>Slot</title>
+</head>
+
+<body>
+ 
+  <div id="app">
+    <child></child>
+    <p>------------------------------------CUT LINE----------------------------------------------</p>
+    <child>
+      <button slot="left">Back</button>
+      <span slot="center">Title</span>
+    </child>
+    <p>------------------------------------CUT LINE----------------------------------------------</p>
+
+  </div>
+
+  <template id="child">
+    <div>
+      <p>Child title</p>
+      <h2>Child Component</h2>
+      <!-- Specify the slot to be replaced through the name attribute -->
+      <slot name="left"><span>left</span></slot>
+      <slot name="center"><span>mid</span></slot>
+      <slot name="right"><span>right</span></slot>
+    </div>
+  </template>
+
+  
+
+
+
+  <script type="text/javascript">
+
+    Vue.component('child', {
+      template: "#child",
+      
+    })
+
+
+    const app = new Vue({
+      el: '#app',
+      data() {
+        return {
+
+        };
+      },
+
+    });
+  </script>
+
+  <style scoped>
+
+  </style>
+
+</body>
+
+</html>

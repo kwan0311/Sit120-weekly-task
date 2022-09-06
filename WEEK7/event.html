@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <Father></Father>
+    </div>
+    <template id="father">
+        <div>
+            <h1>Parent Component</h1>
+            <p>Child send data to Parent {{number}}</p>
+            <Child @account="giveto"></Child>
+        </div>
+    </template>
+    <template id="child">
+        <div>
+            <h1>Child Component</h1>
+            <button @click="give">send 3000 to Parent Component</button>
+        </div>
+    </template>
+    <script src="./vue.js"></script>
+    <script>
+        // Parent Component
+        Vue.component('Father', {
+            template: '#father',
+            data() {
+                return {
+                    number: 0
+                }
+            },
+            methods: {
+                giveto(sonmoney) {
+                    this.number = sonmoney
+                }
+            }
+        })
+        // Child Component
+        Vue.component('Child', {
+            template: '#child',
+            data() {
+                return {
+                    number: 3000
+                }
+            },
+            methods: {
+                give() {
+                    this.$emit('account', this.number)
+                }
+            }
+        })
+        let vm = new Vue({
+            el: '#app'
+        })
+    </script>
+</body>
+
+</html>

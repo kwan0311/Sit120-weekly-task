@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"></script>
+
+    <title>Document</title>
+</head>
+<body>
+    <!--  -->
+    <div id="app">
+        {{message}}<br><br>
+        <button-counter title="This is a props test" ></button-counter><br><br>
+        <button-counter aa-bb="This is a '-' and letter test"></button-counter><br><br>
+        <button-counter>
+          <a slot="slot-text"></a>
+        </button-counter>
+        
+
+    </div>
+    <div id="app1">
+        <h1>{{message}}<h1>
+        <hello-world></hello-world>
+        <hello-tom></hello-tom>
+        <hello-jerry></hello-jerry>
+        <test-com></test-com>
+        <br>
+        <br>
+        
+
+        
+
+    </div>
+    
+    
+    <script> 
+    Vue.component('button-counter',{
+      props:['aaBb','title'],
+      data:function(){
+            return{ 
+                count: 0,
+                message:"Message Test"
+            }
+        },
+        
+        template:`
+        <div>
+          <button @click="handle">CLICK {{count}} TIMES </button>
+          <button>T E S T 1 2 3 </button>
+          <p>{{message}}<p>
+          <p>{{title}}<p>
+          <p>{{aaBb}}<p>
+          <slot name='slot-text'></slot>
+        </div>
+        `,
+        methods:{
+            handle:function(){
+                this.count += 2
+            },
+         },
+    })
+
+    const app = new Vue({
+        el:"#app",
+        data:{
+            message:"This is the First Instance"
+        }
+
+    })
+
+    Vue.component('test-com',{
+      template: `<div>
+        Test
+        <hello-world></hello-world>
+        <button-counter></button-counter>
+        </div>`
+    });
+
+    Vue.component('A',{
+      template: "<h1>This is a slot test</h1>"
+    });
+    //Local component can only be used in 
+    //the Instance where they be registered
+   
+    var HelloWorld = {
+      data: function(){
+        return {
+          msg: 'HelloWorld'
+        }
+      },
+      template: '<div>{{msg}}</div>'
+    };
+
+    var HelloTom = {
+      data: function(){
+        return {
+          msg: 'HelloTom'
+        }
+      },
+      template: '<div>{{msg}}</div>'
+    };
+
+
+    var HelloJerry = {
+      data: function(){
+        return {
+          msg: 'HelloJerry'
+        }
+      },
+      template: '<div>{{msg}}</div>'
+    };
+
+    const app1 = new Vue({
+        el:"#app1",
+        data:{
+            message: "This is the Second Instance"
+        },
+
+        components: {
+        'hello-world': HelloWorld,
+        'hello-tom': HelloTom,
+        'hello-jerry': HelloJerry
+      }
+
+      
+
+
+
+    });
+    
+    </script>
+
+    
+    
+</body>
+</html>
