@@ -1,0 +1,20 @@
+div{
+    position: sticky;
+    top: 0;
+    border: 1px solid black;
+}
+p{
+    color:brown;
+    font-style: inherit;
+    margin-bottom: 15pt;
+    border-color: blue;
+}
+
+.container {
+    column-width: 10em;
+    column-rule: 1px solid rgp(75, 70, 74);
+}
+
+button{
+    color: black;
+}
